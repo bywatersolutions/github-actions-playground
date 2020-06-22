@@ -1,0 +1,25 @@
+---
+name: CI
+on:
+    push:
+        branches:
+            - "**"
+        tags-ignore:
+            - "**"
+jobs:
+    unit_test:
+        name: Run unit tests
+        runs-on: ubuntu-latest
+        steps:
+            - name: Test 1
+              run: |
+                  echo "MY TEST: $MY_TEST"
+              env:
+                  MY_TEST: "HELLO"
+
+            - name: Test 2
+              run: |
+                  echo "RUNNING DOCKER:"
+                  docker run --env TEST=$MY_TEST debian:buster-slim bash -c 'echo "THIS IS A TEST $TEST"'
+              env:
+                  MY_TEST: "HELLO"
