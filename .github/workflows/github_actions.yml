@@ -21,5 +21,3 @@ jobs:
               run: |
                   echo "RUNNING DOCKER:"
                   docker run --env MY_GITHUB_TOKEN=${{ secrets.OUR_GITHUB_TOKEN }} debian:buster-slim bash -c 'echo "TOKEN: $MY_GITHUB_TOKEN"'
-              env:
-                  MY_GITHUB_TOKEN: ${{ secrets.OUR_GITHUB_TOKEN }}
