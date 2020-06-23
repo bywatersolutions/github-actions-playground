@@ -13,13 +13,13 @@ jobs:
         steps:
             - name: Test 1
               run: |
-                  echo "MY TEST: $MY_TEST"
+                  echo "TOKEN: $GITHUB_TOKEN"
               env:
-                  MY_TEST: "HELLO"
+                  GITHUB_TOKEN: ${{ secrets.OUR_GITHUB_TOKEN }}
 
             - name: Test 2
               run: |
                   echo "RUNNING DOCKER:"
-                  docker run --env TEST=$MY_TEST debian:buster-slim bash -c 'echo "THIS IS A TEST $TEST"'
+                  docker run --env GITHUB_TOKEN=$OUR_GITHUB_TOKEN debian:buster-slim bash -c 'echo "TOKEN: $GITHUB_TOKEN"'
               env:
-                  MY_TEST: "HELLO"
+                  GITHUB_TOKEN: ${{ secrets.OUR_GITHUB_TOKEN }}
